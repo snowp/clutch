@@ -24,7 +24,7 @@ import (
 const Name = "clutch.service.chaos.experimentation.store"
 
 // ExperimentStore stores experiment data
-type ExperimentStore interface {
+type ExperimentStorer interface {
 	CreateExperiment(context.Context, *any.Any, *time.Time, *time.Time) (*experimentation.Experiment, error)
 	StopExperiments(context.Context, []uint64) error
 	GetExperiments(context.Context) ([]*experimentation.Experiment, error)

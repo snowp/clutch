@@ -41,7 +41,7 @@ func PeriodicallyRefreshCache(s *Server) {
 	}()
 }
 
-func refreshCache(ctx context.Context, store experimentstore.ExperimentStore, snapshotCache gcpCache.SnapshotCache, rtdsLayerName string,
+func refreshCache(ctx context.Context, store experimentstore.ExperimentStorer, snapshotCache gcpCache.SnapshotCache, rtdsLayerName string,
 	logger *zap.SugaredLogger) {
 	allExperiments, err := store.GetExperiments(ctx)
 	if err != nil {

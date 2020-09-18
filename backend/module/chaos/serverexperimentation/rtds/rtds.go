@@ -33,7 +33,7 @@ type Server struct {
 	ctx context.Context
 
 	// Experiment store
-	experimentStore experimentstore.ExperimentStore
+	experimentStore experimentstore.ExperimentStorer
 
 	// RTDS built-in cache
 	snapshotCache gcpCache.SnapshotCache
@@ -81,7 +81,7 @@ func New(cfg *any.Any, logger *zap.Logger, scope tally.Scope) (module.Module, er
 		return nil, errors.New("could not find experiment store service")
 	}
 
-	experimentStore, ok := store.(experimentstore.ExperimentStore)
+	experimentStore, ok := store.(experimentstore.ExperimentStorer)
 	if !ok {
 		return nil, errors.New("service was not the correct type")
 	}
